@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+    <title>Tutorial Electron</title>
+</head>
+
+<body>
+    <img src="../public/img/dboff.png" alt="status do banco" id="status">
+    <h1>&lt;Lista de Contatos&gt;</h1>
+<br>
+<br>
+    <div class="centro">
+        <form id="frmTarefas">
+            <input type="text" id="txtTarefa" placeholder="Nome" maxlength="11">
+            <input type="number" id="txtDescricao" placeholder="Telefone" maxlength="11">
+            <input type="text"  id="txtEmail" placeholder="E-mail" maxlength="11">
+            <input type="submit" value="Salvar" id="btnSalvar">
+        </form>
+    </div>
+<br>
+    <div class="table">
+        <table >
+            <thead>
+                <tr>
+                    <th id="id">Id</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="agendaTarefas">
+            </tbody>
+        </table>
+    </div>
+   
+    <ul id="listaTarefas"></ul>
+
+<footer>
+    <p id="data"> Data: </p>
+    <img src="../public/img/dbon.png" alt="status do banco" id="status">
+</footer>
+
+    <div id="mensagem"> </div>
+
+    <script src="../public/js/renderer.js"></script>
+</body>
+
+</html>

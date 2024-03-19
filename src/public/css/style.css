@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: rgba(127, 255, 212, 0.507);
+}
+
+#btnSalvar{
+    color: white;
+    background-color: orange;
+    border-radius: 9px 9px 9px 9px;
+    padding: 2px 15px;
+    border: 0;
+}
+
+table{
+    border: 2px solid black;
+}
+
+#botao{
+    position: relative;
+}
+
+
+/*Tabela*/
+.table {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    height: 50vh;
+    position: fixed center;
+}
+
+
+table, th, td {
+    border-collapse: collapse;
+}
+
+thead {
+    animation: gradient 4s ease infinite;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) no-repeat;
+    background-size: 200% 300%;
+    color: white;
+    border: 1px solid #23d5ab;
+}
+
+td {
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px groove #23d5ab;
+    text-align: center;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+h1{text-align: center;}
+
+
+
+button{
+    border-radius: 12px 12px 12px 12px;
+    padding: 6px;
+}
+
+#id {
+    display: none;
+}
+
+/*Rodapé*/
+footer {
+    background-color: #292a2d;
+    width: 100%;
+    color: #ffffff;
+
+    /*Configurando a posição dos Elementos do Rodapé*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 7px 1px 7px;
+    position: fixed;
+    bottom: 0;
+}
+
+footer img {
+    padding-right: 30px;
+}
+
+.centro{
+    place-items: center;
+    display: flex;
+    justify-content: center;
+}
