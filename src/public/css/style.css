@@ -24,7 +24,6 @@ table{
     position: relative;
 }
 
-
 /*Tabela*/
 .table {
     display: flex;
@@ -68,9 +67,9 @@ td {
     }
 }
 
-h1{text-align: center;}
-
-
+h1{
+    text-align: center;
+}
 
 button{
     border-radius: 12px 12px 12px 12px;
