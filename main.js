@@ -11,8 +11,7 @@ const createWindow = () => {
         width: 800,
         height: 600,
         resizable: false,
-        title: "Tutorial Electron",
-
+        title: "Agenda de Contatos",
         icon: `${__dirname}/src/public/img/pc.png`,
         webPreferences: {
             nodeIntegration: true,
@@ -34,7 +33,6 @@ let about
 const aboutWindow = () => {
 
     if (!about) {
-
         about = new BrowserWindow({
             width: 360,
             height: 320,
@@ -67,7 +65,6 @@ app.on('window-all-closed', () => {
 
 
 const menuTemplate = [
-
     {
         label: 'Arquivo',
         submenu: [
@@ -181,10 +178,8 @@ ipcMain.on('get-tasks', async (event, args) => {
     event.reply('pending-tasks', JSON.stringify(tarefasPendentes))
 })
 
-
 ipcMain.on('update-task', async (event, args) => {
     console.log(args)
-
 
     if (args.nome === "") {
         dialog.showMessageBox(win, {
@@ -209,7 +204,6 @@ ipcMain.on('update-task', async (event, args) => {
                 new: true
             }
         )
-
         event.reply('update-task-success', JSON.stringify(tarefaEditada))
     }
 })
@@ -229,6 +223,5 @@ ipcMain.on('delete-task', async (event, args) => {
     if (response === 1) {
         const tarefaExcluida = await Tarefa.findByIdAndDelete(args)
         event.reply('delete-task-success', JSON.stringify(tarefaExcluida))
-
     }
 })
