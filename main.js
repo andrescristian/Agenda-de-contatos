@@ -6,7 +6,6 @@ const Tarefa = require(`${__dirname}/src/models/Tarefa`)
 
 let win
 const createWindow = () => {
-
     win = new BrowserWindow({
         width: 800,
         height: 600,
@@ -21,7 +20,6 @@ const createWindow = () => {
             contextIsolation: false
         }
     })
-
     win.loadFile(`${__dirname}/src/views/index.html`)
 
     const menuPersonalizado = Menu.buildFromTemplate(menuTemplate)
@@ -29,7 +27,6 @@ const createWindow = () => {
 }
 
 let about
-
 const aboutWindow = () => {
 
     if (!about) {
@@ -50,10 +47,8 @@ const aboutWindow = () => {
     }
 }
 
-
 app.whenReady().then(() => {
     createWindow()
-
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
@@ -62,7 +57,6 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
-
 
 const menuTemplate = [
     {
@@ -137,7 +131,6 @@ ipcMain.on('send-message', (event, message) => {
     statusConexao()
 })
 
-
 const statusConexao = async () => {
     try {
         await conectar()
@@ -148,9 +141,6 @@ const statusConexao = async () => {
 }
 
 ipcMain.on('new-task', async (event, args) => {
-    console.log(args)
-
-
     if (args.nome === "") {
         dialog.showMessageBox(win, {
             type: "info",
@@ -165,22 +155,16 @@ ipcMain.on('new-task', async (event, args) => {
         })
         const novaTarefa = new Tarefa(args)
         await novaTarefa.save()
-
         event.reply('new-task-created', JSON.stringify(novaTarefa))
     }
 })
 
 ipcMain.on('get-tasks', async (event, args) => {
     const tarefasPendentes = await Tarefa.find()
-    console.log(tarefasPendentes)
-
-
     event.reply('pending-tasks', JSON.stringify(tarefasPendentes))
 })
 
 ipcMain.on('update-task', async (event, args) => {
-    console.log(args)
-
     if (args.nome === "") {
         dialog.showMessageBox(win, {
             type: "info",
@@ -208,18 +192,13 @@ ipcMain.on('update-task', async (event, args) => {
     }
 })
 
-
 ipcMain.on('delete-task', async (event, args) => {
-    console.log(args)
-
     const { response } = await dialog.showMessageBox(win, {
         type: 'warning',
         buttons: ['Cancelar', 'Excluir'],
         title: 'Confirmação de exclusão',
         message: 'Tem certeza de que deseja excluir esta Tarefa?'
     })
-
-    console.log(response)
     if (response === 1) {
         const tarefaExcluida = await Tarefa.findByIdAndDelete(args)
         event.reply('delete-task-success', JSON.stringify(tarefaExcluida))
